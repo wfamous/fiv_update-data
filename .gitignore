@@ -1,3 +1,4 @@
 # Do not add files folder
 /files 
 /treatment
+/venv
