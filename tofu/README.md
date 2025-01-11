@@ -11,9 +11,9 @@ You will need to install the AWS CLI if you want Open Tofu to use your AWS crede
 Follow these steps : 
 https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 
-## Manage secret variables
+## Manage secret your variables
 
-You need to create a .tfvars file at the root of your environments to manage your common variables (AWS, other providers etc).
+You need to create a .tfvars file at the root of your environments to manage your common environment variables (AWS, other providers etc).
 
 You will have to export your AWS credentials variable in your terminal to run ```tofu init```  
 
