@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-#from dotenv import load_dotenv
+
+#######
+# Automation for Shopify product listing
+#######
+
 import os
 import shopify
 from config import shop_url, shopify_api_token, shopify_api_key 
-# load environment variables
-#load_dotenv()
-#endpoint = 
 
-# main function
+
+# main function (prod)
 #def lambda_handler(event, context):
 
 # main function (locale)
@@ -26,4 +28,3 @@ if __name__ == "__main__":
         print(f'Product name:', product.title)
 
     print(f'shop:', product.title)
-#lambda_handler()
