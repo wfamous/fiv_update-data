@@ -3,5 +3,14 @@
 /treatment
 /venv
 
+
+# Terraform
+*.terraform
+terraform.tfstate
+.terraform.lock.hcl
+
+
+
 # secret variables
-.env
+*.env
+*.tfvars
