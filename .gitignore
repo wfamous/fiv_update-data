@@ -4,4 +4,5 @@
 /venv
 
 # secret variables
-.env
+*.env
+*.tfvars
