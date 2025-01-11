@@ -6,8 +6,7 @@
 
 import os
 import shopify
-from config import shop_url, shopify_api_token, shopify_api_key 
-
+from config import shop_url, shopify_api_token, shopify_api_key, s3 
 
 # main function (prod)
 #def lambda_handler(event, context):
@@ -25,6 +24,8 @@ if __name__ == "__main__":
 
     # products
     for product in products:
-        print(f'Product name:', product.title)
+        print('Product name:', product.title)
 
-    print(f'shop:', product.title)
+    # buckets 
+    for bucket in s3.buckets.all():
+        print('Bucket name:', bucket.name)
