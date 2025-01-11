@@ -5,9 +5,11 @@
 
 
 # Terraform
-.terraform.lock.hcl
 *.terraform
 terraform.tfstate
+.terraform.lock.hcl
+
+
 
 # secret variables
 *.env
