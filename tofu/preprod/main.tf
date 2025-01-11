@@ -14,10 +14,11 @@ terraform {
   }
 
   backend "s3" {
-    bucket   = "tfstate-fiv-backend"
-    key      = "state/terraform.tfstate"
-    region   = "eu-west-3"
+      bucket         = "tfstate-fiv-backend-preprod"
+      key            = "state/terraform.tfstate"
+      region         = "eu-west-3"
   }
+
 }
 
 

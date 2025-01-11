@@ -10,6 +10,6 @@ variable "environment" {
 
 # environment
 variable "aws_region"{
-  description = "Environment of deployment"
+  description = "AWS Region"
   type        = string
 }
