@@ -3,7 +3,10 @@
 /treatment
 /venv
 
+
+# Terraform
+.terraform.lock.hcl
+*.terraform
+
 # secret variables
 *.env
-*.tfvars
-*.terraform
