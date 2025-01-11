@@ -24,7 +24,7 @@ pip3 --version
 
 To run your scripts, you need to activate a virtual Python3 environment. We called our environment folder "venv" and placed it at the root of our project. You can create your own environment folder at the root of your project by running this command :
 
-format => python3 -m venv path/to/venv.
+format => python3 -m venv path/to/<python_env_name>.
 
 ```bash
 python3 -m venv venv
@@ -32,7 +32,7 @@ python3 -m venv venv
 
 Then activate it :
 
-format => source python/env/bin/activate
+format => source <python_env_name>/bin/activate
 
 ```bash
 source venv/bin/activate
