@@ -2,3 +2,6 @@
 /files 
 /treatment
 /venv
+
+# secret variables
+.env
