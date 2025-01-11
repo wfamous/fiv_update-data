@@ -14,11 +14,10 @@ terraform {
   }
 
   backend "s3" {
-      bucket         = "tfstate-fiv-backend-preprod"
+      bucket         = "tfstate-fiv-backend-${var.environment}"
       key            = "state/terraform.tfstate"
       region         = "eu-west-3"
   }
-
 }
 
 
@@ -27,3 +26,12 @@ provider "aws" {
   region  = var.aws_region
 }
 
+# ===================================
+#  Storage creation
+# ===================================
+
+module "storage" {
+  source          = "./modules/storage"
+  private_buckets = var.private_buckets
+  environment     = var.environment
+}
