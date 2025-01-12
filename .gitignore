@@ -9,7 +9,8 @@
 terraform.tfstate
 .terraform.lock.hcl
 
-
+# Python
+__pycache__
 
 # secret variables
 *.env

@@ -7,15 +7,20 @@ https://opentofu.org/docs/intro/install/deb/
 
 ## Install AWS CLI
 
-You will need to install the AWS CLI if you want Open Tofu to use your AWS credentials initiate your backend with it.
+You will need to install the AWS CLI if you want Open Tofu to use your AWS credentials and initiate your backend with it.
 Follow these steps : 
 https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 
 ## Manage your secret variables
 
-You need to create a .tfvars file at the root of your environments to manage your common environment variables (AWS, other providers etc).
+You need to create a .tfvars file at the root of your project or environment folder to manage your common environment variables (keys, folder names, paths etc).
 
-You will have to export your AWS credentials variable in your terminal to run ```tofu init```  
+To run the command ```tofu init```: 
+You will have to configure your AWS CLI by either overwriting the configuration file 
+ 
+ ``` sudo nano ~/.aws/credentials``` 
+ 
+ or export your AWS credentials variables in your terminal  
 
 ```bash
 export AWS_ACCESS_KEY_ID="AWS_ACCESS_KEY"
