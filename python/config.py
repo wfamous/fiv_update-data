@@ -5,8 +5,7 @@ import os
 import boto3
 
 # load environment variables
-load_dotenv()  # Load default .env file
-load_dotenv('.env.prod')  # Load .env.prod file (overwrites if needed)
+load_dotenv() 
 
 # shopify setup
 shop_url = os.getenv("SHOPIFY_SHOP_URL")
