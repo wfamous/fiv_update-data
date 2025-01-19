@@ -25,9 +25,11 @@ You will have to configure your AWS CLI by either overwriting the configuration 
 ```bash
 export AWS_ACCESS_KEY_ID="AWS_ACCESS_KEY"
 export AWS_SECRET_ACCESS_KEY="AWS_SECRET_KEY"
+export AWS_SESSION_TOKEN="AWS_SESSION_TOKEN" # alternative
 
-# or 
-export AWS_SESSION_TOKEN="AWS_SESSION_TOKEN" 
+# or  load your variables files
+source .env.dev 
+source .env.prod
 ```
 
 
@@ -52,3 +54,5 @@ tofu init
 tofu plan 
 tofu apply
 ```
+
+There is no need to created a prod folder if you use variables dynamically.

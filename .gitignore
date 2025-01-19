@@ -13,5 +13,6 @@ terraform.tfstate
 __pycache__
 
 # secret variables
-*.env
+.env.prod
+.env
 *.tfvars
