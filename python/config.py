@@ -5,7 +5,8 @@ import os
 import boto3
 
 # load environment variables
-load_dotenv()
+load_dotenv()  # Load default .env file
+load_dotenv('.env.prod')  # Load .env.prod file (overwrites if needed)
 
 # shopify setup
 shop_url = os.getenv("SHOPIFY_SHOP_URL")
@@ -16,6 +17,6 @@ shopify_api_secret = os.getenv("SHOPIFY_API_SECRET")
 shopify_api_token = os.getenv("SHOPIFY_API_TOKEN")
 
 # aws setup
-aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID")
-aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY")
+aws_access_key_id = os.getenv("TF_VAR_AWS_ACCESS_KEY_ID")
+aws_secret_access_key = os.getenv("TF_VAR_AWS_SECRET_ACCESS_KEY")
 s3 = boto3.resource('s3')
