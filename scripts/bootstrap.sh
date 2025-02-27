@@ -11,6 +11,7 @@ set +a
 source "./gcp_utils.sh"
 
 # set variables
+ENV="$ENV"
 GCP_PROJECT_ID="$GCP_PROJECT_ID"
 GCP_SA_NAME="$GCP_SA_NAME"
 GCP_SA_HOST="$GCP_SA_HOST"
@@ -26,4 +27,4 @@ create_service_account "$GCP_PROJECT_ID" "$GCP_SA_NAME" "$GCP_SA_EMAIL"
 bind_iam_policy "$GCP_PROJECT_ID" "$GCP_SA_EMAIL" "$GCP_SA_STORAGE_ROLE"
 
 # create buckets
-create_private_buckets "$GCP_BUCKET_NAME" "$GCP_LOCATION" "STANDARD"
+create_private_buckets "$GCP_BUCKET_NAME" "$GCP_LOCATION" "STANDARD" "$ENV"

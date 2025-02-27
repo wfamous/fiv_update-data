@@ -45,8 +45,9 @@ function create_private_buckets(){
   local BUCKET_NAME=$1
   local BUCKET_LOCATION=$2
   local CLASS_STORAGE=$3
+  local ENV=$4
 
-  gcloud storage buckets create gs://"$BUCKET_NAME" \
+  gcloud storage buckets create gs://"$BUCKET_NAME-$ENV" \
   --location="$BUCKET_LOCATION" --public-access-prevention \
   --uniform-bucket-level-access --default-storage-class="$CLASS_STORAGE"
 }
