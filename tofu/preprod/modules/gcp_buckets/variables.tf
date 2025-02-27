@@ -23,5 +23,5 @@ variable "gcp_private_bucket_subfolders"{
 
 variable "gcp_buckets_location"{
   description = "Region of GCP buckets"
-  type        = "string"
+  type        = string
 }
