@@ -1,5 +1,5 @@
 # ===================================
-# Author: @wfamous, @aglorhythm / famousinvogue.com
+# Author: @wfamous / famousinvogue.com
 # Backend script
 # ===================================
 

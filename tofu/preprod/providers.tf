@@ -9,12 +9,11 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.83.1"
     }
-  }
 
-  backend "s3" {
-      bucket         = "tfstate-fiv-backend-${var.environment}"
-      key            = "state/terraform.tfstate"
-      region         = "eu-west-3"
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 6.23.0"
+    }
   }
 }
 
