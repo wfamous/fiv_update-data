@@ -2,6 +2,9 @@
 /files 
 /treatment
 /venv
+/external
+/.idea/
+
 
 
 # Terraform
