@@ -24,6 +24,7 @@ provider "aws" {
 }
 
 provider "google" {
-      project     = var.gcp_project_id
-      region      = var.gcp_region
+      project                     = var.gcp_project_id
+      region                      = var.gcp_region
+      impersonate_service_account = "${var.gcp_sa_name}@${var.gcp_project_id}.${var.gcp_sa_host}"
 }
