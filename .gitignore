@@ -1,3 +1,21 @@
 # Do not add files folder
 /files 
 /treatment
+/venv
+/external
+/.idea/
+
+
+
+# Terraform
+*.terraform
+terraform.tfstate
+.terraform.lock.hcl
+
+# Python
+__pycache__
+
+# secret variables
+.env.prod
+.env
+*.tfvars
