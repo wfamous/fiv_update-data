@@ -59,7 +59,7 @@ function create_tf_backend_bucket(){
   local ENV=$4
 
   # assign to array
-  BUCKET_NAMES=($BUCKET_NAME)
+  BUCKET_NAMES=("$BUCKET_NAME")
 
   if check_bucket_name ${BUCKET_NAMES[@]} $ENV; then
     echo "--Backend bucket already exists."
