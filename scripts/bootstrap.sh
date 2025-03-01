@@ -21,13 +21,13 @@ export GCP_SA_HOST="$TF_VAR_gcp_sa_host"
 export GCP_SA_EMAIL="$GCP_SA_NAME@$GCP_PROJECT_ID.$GCP_SA_HOST"
 export GCP_BUCKET_NAME="$TF_VAR_gcp_backend_bucket_name"
 export GCP_REGION="$TF_VAR_gcp_region"
-export GCP_SA_STORAGE_ROLE="$TF_VAR_gcp_sa_storage_role"
+export GCP_SA_STORAGE_ROLE=(${TF_VAR_gcp_sa_storage_role[@]})
 
 # create service account
-create_service_account "$GCP_PROJECT_ID" "$GCP_SA_NAME" "$GCP_SA_EMAIL"
+create_service_account "$GCP_PROJECT_ID" "$GCP_SA_NAME" "$GCP_SA_EMAIL" "$GCP_SA_HOST"
 
 # add IAM policy
-bind_iam_policy "$GCP_PROJECT_ID" "$GCP_SA_EMAIL" "$GCP_SA_STORAGE_ROLE"
+bind_sa_iam_policy "$GCP_PROJECT_ID" "$GCP_SA_EMAIL" "${GCP_SA_STORAGE_ROLE[@]}"
 
-# create buckets
-create_private_buckets "$GCP_BUCKET_NAME" "$GCP_REGION" "STANDARD" "$ENV"
+# create backend bucket for terraform
+create_tf_backend_bucket "$GCP_BUCKET_NAME" "$GCP_REGION" "STANDARD" "$ENV"
