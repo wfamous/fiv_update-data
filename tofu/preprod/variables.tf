@@ -31,7 +31,7 @@ variable "aws_private_buckets"{
   type        = list(string)
 }
 
-variable "private_buckets_subfolders"{
+variable "aws_private_buckets_subfolders"{
   description = "List of private buckets"
   type        = list(string)
 }
@@ -42,8 +42,19 @@ variable "gcp_region"{
   type        = string
 }
 
+
 variable "gcp_project_id"{
   description = "GCP project id"
+  type        = string
+}
+
+variable "gcp_sa_name"{
+  description = "Terraform' service account name for GCP"
+  type        = string
+}
+
+variable "gcp_sa_host"{
+  description = "Terraform' service account host for GCP"
   type        = string
 }
 

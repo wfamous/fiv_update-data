@@ -7,7 +7,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.83.1"
+      version = "~> 5.81"
     }
 
     google = {
@@ -24,6 +24,8 @@ provider "aws" {
 }
 
 provider "google" {
-      project     = var.gcp_project_id
-      region      = var.gcp_region
+      project                     = var.gcp_project_id
+      region                      = var.gcp_region
+      credentials = file("../../external/sa-key.json")
+      impersonate_service_account = "${var.gcp_sa_name}@${var.gcp_project_id}.${var.gcp_sa_host}" # for workload
 }
