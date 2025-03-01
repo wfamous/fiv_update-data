@@ -78,9 +78,8 @@ function check_bucket_name(){
   local ENV=$ENV
 
   for BUCKET in "${BUCKET_NAMES[@]}"; do
-    echo "bucket is :" $BUCKET_NAMES
     if gcloud storage buckets list --format="value(name)" | grep -wq "$BUCKET-$ENV"; then
-      echo "Bucket gs://$BUCKET-$ENV already exists."
+      echo "Bucket already exists."
     else
       return 1
     fi
