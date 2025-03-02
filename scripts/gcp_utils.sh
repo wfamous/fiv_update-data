@@ -31,7 +31,7 @@ function create_service_account() {
       gcloud iam service-accounts create "$SA_NAME" --display-name "Terraform Service Account"
       echo "✅ Service account created successfully!"
 
-      create_sa_key_file $SA_ACCOUNT_EMAIL
+      create_sa_key_file "$SA_ACCOUNT_EMAIL"
   fi
 }
 
@@ -44,7 +44,7 @@ function create_sa_key_file(){
   else
     echo "--Creating key for account"
      gcloud iam service-accounts keys create sa-key.json \
-    --iam-account=$SA_EMAIL
+    --iam-account="$SA_EMAIL"
     mv sa-key.json ../external
   fi
 }
