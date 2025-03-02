@@ -1,6 +1,7 @@
 # ===================================
 # Author: @wfamous / famousinvogue.com
 # Shopify tools
+# Docs : https://shopify.dev/docs/api/admin-rest
 # ===================================
 
 import shopify
@@ -13,7 +14,7 @@ class MyShopify:
         Initialise a connection to a Shopify shop.
         :param shopify_url: (ex: 'my-cute-store-name.shopify.com')
         :param api_key: Shopify API key
-        :param token: Shopify API token
+        :param api_token: Shopify API token
         """
         self.shopify_url = shopify_url
         self.api_key = api_key
@@ -23,8 +24,27 @@ class MyShopify:
         base_url = f'https://{api_key}:{api_token}@{shopify_url}/admin'
 
         # connect to Shopify
-        connection = shopify.ShopifyResource.set_site(base_url)
-        shop = shopify.Shop.current()
+        shopify.ShopifyResource.set_site(base_url)
 
-        if shop and shop.name:
+        try:
+            shop = shopify.Shop.current()
             print(f"Successfully connected to {shop.name} shop")
+        except Exception as e:
+            print(f"Connection to shop failed {e}")
+
+
+    def get_products(self):
+        products_list = shopify.Product.find(limit=250) # if more products, needs pagination handling
+        products_all = []
+
+        for product in products_list:
+            products_all.append({
+                "id": getattr(product, "id"),
+                "name": getattr(product, "title"),
+                "created_at": getattr(product, "created_at"),
+                "updated_at": getattr(product, "updated_at"),
+                "description": getattr(product, "body_html"),
+                "product_type": getattr(product, "product_type"),
+                "status": getattr(product, "status")
+            })
+        return products_all

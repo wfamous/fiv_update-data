@@ -1,16 +1,15 @@
 # Do not add files folder
-/files 
-/treatment
+/files
 /venv
 /external
 /.idea/
-
-
+/python/venv
 
 # Terraform
 *.terraform
 terraform.tfstate
 .terraform.lock.hcl
+terraform.tfstate.backup
 
 # Python
 __pycache__
