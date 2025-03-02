@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# ===================================
+# Author: @wfamous / famousinvogue.com
+# Tools configuration for FIV (Famous in Vogue) automation
+# ===================================
 
 from dotenv import load_dotenv
 import os
