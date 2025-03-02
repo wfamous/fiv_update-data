@@ -1,8 +1,17 @@
-# New to python ? 🐍
+
+# Automated Data Management with Python
+
+We have created a Python package named FIVTools, designed to automate our data management workflows, including:
+
+- Syncing Google Drive files to Google Cloud Storage (GCP)
+- Checking vendor website status for Shopify updates
+- Uploading vendor lists files to Shopify
+
+## New to python ? 🐍
 
 Here are the first steps you need to follow if you want to use python in your environment.
 
-## Install Python3 (Debian) ⚡
+### Install Python3 (Debian) ⚡
 
 **Update your package list** : 
 ```bash
@@ -20,7 +29,7 @@ python3 --version
 pip3 --version
 ```
 
-## Create your environment 🖥️
+### Create your environment 🖥️
 
 To run your scripts, you need to activate a virtual Python3 environment. We called our environment folder "venv" and placed it at the root of our project. You can create your own environment folder at the root of your project by running this command :
 
