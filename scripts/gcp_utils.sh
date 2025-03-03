@@ -19,36 +19,38 @@ function create_service_account() {
   local PROJECT_ID=$1
   local SA_NAME=$2
   local SA_ACCOUNT_EMAIL=$3
-  local SA_ACCOUNT_HOST=$4
+  local FILE_NAME=$4
+  local FOLDER_NAME=$5
+  echo "variables ?" "$PROJECT_ID" "$SA_NAME" "$SA_ACCOUNT_EMAIL" "$FILE_NAME" "$FOLDER_NAME"
 
-  SA_ACCOUNT_EMAIL="$SA_NAME@$PROJECT_ID.$SA_ACCOUNT_HOST"
 
   if check_service_account "$SA_ACCOUNT_EMAIL"; then
-      echo "--Service account already exists."
-      create_sa_key_file $SA_ACCOUNT_EMAIL
+      echo "--Service account $SA_NAME already exists."
+
+      create_sa_key_file "$SA_ACCOUNT_EMAIL" "$FILE_NAME" "$FOLDER_NAME"
   else
       echo "--Creating service account '$SA_ACCOUNT_EMAIL' ..."
-      gcloud iam service-accounts create "$SA_NAME" --display-name "Terraform Service Account"
+      gcloud iam service-accounts create "$SA_NAME" --display-name "$SA_NAME Service Account"
       echo "✅ Service account created successfully!"
 
-      create_sa_key_file "$SA_ACCOUNT_EMAIL"
+      create_sa_key_file "$SA_ACCOUNT_EMAIL" "$FILE_NAME" "$FOLDER_NAME"
   fi
 }
 
 function create_sa_key_file(){
   local SA_EMAIL=$1
   local SA_KEY_FILE=$2
-  local GCP_SA_KEYS_FOLDER=$3
+  local SA_KEY_FOLDER=$3
 
    echo "Step : Creating key file for SA account"
-
-  if [ -f "$SA_KEY_FILE" ]; then
+    echo "file name: ""$SA_KEY_FILE"
+  if [ -f "$SA_KEY_FOLDER"/"$SA_KEY_FILE" ]; then
     echo "A key file exist for this account."
   else
     echo "--Creating key for account"
      gcloud iam service-accounts keys create "$SA_KEY_FILE" \
     --iam-account="$SA_EMAIL"
-    mv "$SA_KEY_FILE" "$GCP_SA_KEYS_FOLDER"
+    mv "$SA_KEY_FILE" "$SA_KEY_FOLDER"
   fi
 }
 
@@ -87,7 +89,7 @@ function create_tf_backend_bucket(){
   # assign to array
   BUCKET_NAMES=("$BUCKET_NAME")
 
-  if check_bucket_name ${BUCKET_NAMES[@]} $ENV; then
+  if check_bucket_name $"{BUCKET_NAMES[@]}" $ENV; then
     echo "--Backend bucket already exists."
   else
     echo "--Creating backend bucket"
