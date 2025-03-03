@@ -37,21 +37,24 @@ function create_service_account() {
 
 function create_sa_key_file(){
   local SA_EMAIL=$1
+  local SA_KEY_FILE=$2
+  local GCP_SA_KEYS_FOLDER=$3
+
    echo "Step : Creating key file for SA account"
 
-  if [ -f "../external/sa-key.json" ]; then
+  if [ -f "$SA_KEY_FILE" ]; then
     echo "A key file exist for this account."
   else
     echo "--Creating key for account"
-     gcloud iam service-accounts keys create sa-key.json \
+     gcloud iam service-accounts keys create "$SA_KEY_FILE" \
     --iam-account="$SA_EMAIL"
-    mv sa-key.json ../external
+    mv "$SA_KEY_FILE" "$GCP_SA_KEYS_FOLDER"
   fi
 }
 
 # adds IAM policy to service account
 function bind_sa_iam_policy(){
-  echo "Step : Bind IAM policy to Service Account"
+  echo "Step : Bind IAM policy to a Service Account"
   local PROJECT_ID=$1
   local SA_ACCOUNT_EMAIL=$2
   shift 2
