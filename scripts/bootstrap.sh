@@ -28,18 +28,21 @@ export GCP_TF_SA_NAME="$TF_VAR_gcp_sa_name"
 export GCP_TF_SA_EMAIL="$GCP_TF_SA_NAME@$GCP_PROJECT_ID.$GCP_SA_HOST"
 export GCP_TF_BUCKET_NAME="$TF_VAR_gcp_backend_bucket_name"
 export GCP_TF_SA_STORAGE_ROLE=(${TF_VAR_gcp_sa_storage_role[@]})
-export GCP_TF_SA_KEY_FILE="tf-sa-key.json"
+export GCP_TF_SA_KEY_FILE="$GCP_TF_SA_KEY_FILE"
 # gcp - storage manager
-export GCP_SM_SA_NAME="$GCP_SA_NAME"
+export GCP_SM_SA_NAME="$GCP_SM_SA_NAME"
 export GCP_SM_SA_EMAIL="$GCP_SM_SA_NAME@$GCP_PROJECT_ID.$GCP_SA_HOST"
 export GCP_SM_SA_STORAGE_ROLE=(${GCP_SM_SA_STORAGE_ROLE[@]})
-export GCP_SM_SA_KEY_FILE_TF="storage-manager-sa-key.json"
+export GCP_SM_SA_KEY_FILE="$GCP_SM_SA_KEY_FILE"
 
 
 
 # create service accounts
-create_service_account "$GCP_PROJECT_ID" "$GCP_TF_SA_NAME" "$GCP_TF_SA_EMAIL" "$GCP_SA_HOST" # terraform
-create_service_account "$GCP_PROJECT_ID" "$GCP_SM_SA_NAME" "$GCP_SM_SA_EMAIL" "$GCP_SA_HOST" # g2drive
+create_service_account "$GCP_PROJECT_ID" "$GCP_TF_SA_NAME" "$GCP_TF_SA_EMAIL" \
+"$GCP_SA_HOST" "$GCP_TF_SA_KEY_FILE" "$GCP_SA_KEYS_FOLDER" # terraform
+
+create_service_account "$GCP_PROJECT_ID" "$GCP_SM_SA_NAME" "$GCP_SM_SA_EMAIL" \
+"$GCP_SA_HOST" "$GCP_SM_SA_KEY_FILE" "$GCP_SA_KEYS_FOLDER"# storage manager
 
 # add IAM policies
 bind_sa_iam_policy "$GCP_PROJECT_ID" "$GCP_TF_SA_EMAIL" "${GCP_TF_SA_STORAGE_ROLE[@]}"
